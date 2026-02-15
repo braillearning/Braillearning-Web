@@ -1048,24 +1048,26 @@
         }
 
         .team-card-new {
-            background: white;
+            background: var(--card-bg);
             border-radius: 20px;
             padding: 1.5rem;
             display: flex;
             align-items: center;
             gap: 1.5rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s ease, border-color 0.3s ease;
         }
 
         .team-card-new:hover {
             transform: translateY(-5px);
+            border-color: var(--primary-light);
         }
 
         .team-icon-container {
             width: 60px;
             height: 60px;
-            background-color: #e0faff;
+            background-color: rgba(99, 102, 241, 0.1);
             border-radius: 15px;
             display: flex;
             align-items: center;
@@ -1075,7 +1077,7 @@
 
         .team-icon-container i {
             font-size: 1.5rem;
-            color: #00a8e8;
+            color: var(--primary-light);
         }
 
         .team-info {
@@ -1083,21 +1085,21 @@
         }
 
         .team-info h3 {
-            color: #1f2937;
+            color: var(--text-light);
             font-size: 1.1rem;
             margin-bottom: 0.2rem;
             font-weight: 700;
         }
 
         .team-role {
-            color: #00a8e8;
+            color: var(--primary-light);
             font-weight: 600;
             font-size: 0.9rem;
             margin-bottom: 0.5rem;
         }
 
         .team-desc {
-            color: #6b7280;
+            color: var(--text-gray);
             font-size: 0.85rem;
             line-height: 1.4;
         }
