@@ -587,6 +587,154 @@
             box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
         }
 
+        /* Screenshots Section */
+        .screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .screenshot-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .screenshot-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: var(--primary-light);
+        }
+
+        .screenshot-placeholder {
+            width: 100%;
+            height: 450px;
+            background: linear-gradient(45deg, #1f2937, #111827);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .screenshot-placeholder i {
+            font-size: 3rem;
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        .screenshot-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .screenshot-info h4 {
+            color: var(--primary-light);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .screenshot-info p {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        /* FAQ Section */
+        .faq-grid {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: var(--primary-light);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        .faq-answer {
+            color: var(--text-gray);
+            margin-top: 1rem;
+            line-height: 1.6;
+            display: none;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .faq-item.active .fa-chevron-down {
+            transform: rotate(180deg);
+        }
+
+        /* Contact Section Improvements */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-light);
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(99, 102, 241, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.5rem;
+            color: var(--primary-light);
+        }
+
+        .contact-card h3 {
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card p {
+            color: var(--text-gray);
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .nav-links {
@@ -652,8 +800,9 @@
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#nosotros">Nosotros</a></li>
                 <li><a href="#objetivos">Objetivos</a></li>
+                <li><a href="#capturas">Galería</a></li>
+                <li><a href="#faq">FAQ</a></li>
                 <li><a href="#instalacion">Instalación</a></li>
-                <li><a href="#descargar">Descargar</a></li>
             </ul>
         </nav>
     </header>
@@ -794,6 +943,101 @@
                             Mejora constante basada en retroalimentación de usuarios, investigación
                             en accesibilidad y las últimas tecnologías educativas disponibles.
                         </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Screenshots Section -->
+        <section id="capturas">
+            <h2 class="section-title">La App en Acción</h2>
+            <p class="section-subtitle">
+                Descubre cómo Braillearning hace el aprendizaje fácil y divertido
+            </p>
+
+            <div class="screenshots-grid">
+                <!-- Screenshot 1 -->
+                <div class="screenshot-card">
+                    <div class="screenshot-placeholder">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <div class="screenshot-info">
+                        <h4>Traductor Instantáneo</h4>
+                        <p>Convierte texto a Braille y viceversa con la cámara</p>
+                    </div>
+                </div>
+
+                <!-- Screenshot 2 -->
+                <div class="screenshot-card">
+                    <div class="screenshot-placeholder">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="screenshot-info">
+                        <h4>Lecciones Paso a Paso</h4>
+                        <p>Aprende desde el alfabeto hasta signos avanzados</p>
+                    </div>
+                </div>
+
+                <!-- Screenshot 3 -->
+                <div class="screenshot-card">
+                    <div class="screenshot-placeholder">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="screenshot-info">
+                        <h4>Sistema de Logros</h4>
+                        <p>Gana medallas y mantén tu racha de aprendizaje</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq">
+            <h2 class="section-title">Preguntas Frecuentes</h2>
+            <p class="section-subtitle">Resolvemos tus dudas sobre Braillearning</p>
+
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        ¿Es gratis Braillearning?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Sí, Braillearning es una iniciativa estudiantil completamente gratuita y sin anuncios. Nuestro
+                        objetivo es hacer la educación inclusiva accesible para todos.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        ¿Necesito internet para usar la app?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        No, una vez descargada, todas las lecciones y herramientas de traducción funcionan perfectamente
+                        sin conexión a internet.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        ¿Qué dispositivos son compatibles?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Actualmente Braillearning está disponible para dispositivos Android con versión 7.0 (Nougat) o
+                        superior.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        ¿Cómo puedo apoyar el proyecto?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Puedes apoyarnos compartiendo la app con amigos, dejando una reseña positiva o contactándonos
+                        para colaborar. ¡Toda ayuda es bienvenida!
                     </div>
                 </div>
             </div>
@@ -948,13 +1192,13 @@
                 mouseY = e.clientY;
 
                 if (orb1) {
-                    orb1.style.transform = `translate(${mouseX * 0.02}px, ${mouseY * 0.02}px)`;
+                    orb1.style.transform = `translate(${mouseX * 0.15}px, ${mouseY * 0.15}px)`;
                 }
                 if (orb2) {
-                    orb2.style.transform = `translate(${-mouseX * 0.015}px, ${-mouseY * 0.015}px)`;
+                    orb2.style.transform = `translate(${-mouseX * 0.12}px, ${-mouseY * 0.12}px)`;
                 }
                 if (orb3) {
-                    orb3.style.transform = `translate(${mouseX * 0.01}px, ${-mouseY * 0.01}px)`;
+                    orb3.style.transform = `translate(${mouseX * 0.1}px, ${-mouseY * 0.1}px)`;
                 }
             });
         });
@@ -973,6 +1217,21 @@
                         block: 'start'
                     });
                 }
+            });
+        });
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', () => {
+                // Close other items
+                document.querySelectorAll('.faq-item').forEach(other => {
+                    if (other !== item) {
+                        other.classList.remove('active');
+                    }
+                });
+
+                // Toggle current item
+                item.classList.toggle('active');
             });
         });
 
