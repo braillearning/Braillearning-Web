@@ -6,10 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BrailleLearning - Aprende Braille de Forma Accesible</title>
     <meta name="description"
-        content="BrailleLearning es una aplicación móvil innovadora diseñada para enseñar Braille de manera accesible e interactiva. Descarga nuestra demo gratuita.">
+        content="BrailleLearning es una aplicación móvil innovadora desarrollada por estudiantes de preparatoria para enseñar Braille de manera accesible e interactiva.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png"
+        href="https://raw.githubusercontent.com/braillearning/Braillearning-Demo/main/assets/LogoNoFondoBlack.png">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome for professional icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
     <style>
         * {
             margin: 0;
@@ -41,7 +50,7 @@
             overflow-x: hidden;
         }
 
-        /* Animated Background */
+        /* Animated Background with Braille Dots */
         .bg-animation {
             position: fixed;
             top: 0;
@@ -62,6 +71,36 @@
                 radial-gradient(circle at 80% 80%, rgba(236, 72, 153, 0.15) 0%, transparent 50%),
                 radial-gradient(circle at 40% 20%, rgba(20, 184, 166, 0.1) 0%, transparent 50%);
             animation: float 20s ease-in-out infinite;
+        }
+
+        /* Braille Dots Animation */
+        .braille-dot {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: rgba(99, 102, 241, 0.3);
+            border-radius: 50%;
+            animation: rise linear infinite;
+        }
+
+        @keyframes rise {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-100px) scale(1);
+                opacity: 0;
+            }
         }
 
         @keyframes float {
@@ -291,6 +330,7 @@
             display: inline-block;
             position: relative;
             z-index: 1;
+            color: var(--primary-light);
         }
 
         .card h3 {
@@ -341,6 +381,7 @@
             justify-content: center;
             background: var(--gradient-1);
             border-radius: 16px;
+            color: white;
         }
 
         .feature-content h4 {
@@ -351,6 +392,55 @@
 
         .feature-content p {
             color: var(--text-gray);
+        }
+
+        /* Installation Steps */
+        .installation-steps {
+            background: rgba(30, 41, 59, 0.3);
+            border-radius: 40px;
+            padding: 4rem;
+            margin: 4rem 0;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .step:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateX(10px);
+        }
+
+        .step-number {
+            min-width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gradient-1);
+            border-radius: 50%;
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .step-content h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+        }
+
+        .step-content p {
+            color: var(--text-gray);
+            line-height: 1.8;
         }
 
         /* Download Section */
@@ -439,25 +529,35 @@
         }
 
         footer p {
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
         }
 
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 1.5rem;
+            gap: 2rem;
             margin-top: 1.5rem;
         }
 
         .social-links a {
-            color: var(--text-gray);
-            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--text-light);
+            font-size: 1.8rem;
             transition: all 0.3s ease;
         }
 
         .social-links a:hover {
-            color: var(--primary-light);
-            transform: translateY(-3px);
+            background: var(--gradient-1);
+            border-color: var(--primary-light);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
         }
 
         /* Responsive */
@@ -479,9 +579,16 @@
             }
 
             .features,
-            .download-section {
+            .download-section,
+            .installation-steps {
                 padding: 2rem;
                 border-radius: 24px;
+            }
+
+            .step {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
             }
         }
 
@@ -501,7 +608,7 @@
 </head>
 
 <body>
-    <div class="bg-animation"></div>
+    <div class="bg-animation" id="brailleContainer"></div>
 
     <header>
         <nav class="nav-container">
@@ -510,6 +617,7 @@
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#nosotros">Nosotros</a></li>
                 <li><a href="#objetivos">Objetivos</a></li>
+                <li><a href="#instalacion">Instalación</a></li>
                 <li><a href="#descargar">Descargar</a></li>
             </ul>
         </nav>
@@ -519,8 +627,8 @@
         <section id="inicio" class="hero">
             <h1>Aprende Braille de Forma Accesible e Interactiva</h1>
             <p class="subtitle">
-                Una aplicación móvil innovadora diseñada para hacer el aprendizaje del Braille
-                accesible, divertido y efectivo para todos.
+                Una aplicación móvil innovadora desarrollada por estudiantes de preparatoria
+                para hacer el aprendizaje del Braille accesible, divertido y efectivo para todos.
             </p>
             <a href="#descargar" class="cta-button">Descargar Demo Gratuita</a>
         </section>
@@ -528,34 +636,40 @@
         <section id="nosotros">
             <h2 class="section-title">¿Quiénes Somos?</h2>
             <p class="section-subtitle">
-                Un equipo apasionado comprometido con la inclusión y la accesibilidad
+                Un equipo de estudiantes de preparatoria comprometidos con la inclusión y la accesibilidad
             </p>
 
             <div class="cards-grid">
                 <div class="card">
-                    <div class="card-icon">🎯</div>
+                    <i class="fas fa-bullseye card-icon"></i>
                     <h3>Nuestra Misión</h3>
                     <p>
-                        Democratizar el aprendizaje del Braille mediante tecnología accesible
-                        y de alta calidad, eliminando barreras para personas con discapacidad visual.
+                        Somos un equipo de jóvenes estudiantes de preparatoria apasionados por la tecnología
+                        y la inclusión social. Nuestra misión es democratizar el aprendizaje del Braille mediante
+                        una aplicación móvil accesible y de alta calidad, eliminando barreras para personas con
+                        discapacidad visual y promoviendo la igualdad de oportunidades educativas.
                     </p>
                 </div>
 
                 <div class="card">
-                    <div class="card-icon">💡</div>
+                    <i class="fas fa-eye card-icon"></i>
                     <h3>Nuestra Visión</h3>
                     <p>
-                        Ser la plataforma líder en educación Braille, reconocida por su
-                        innovación, accesibilidad y impacto positivo en la comunidad.
+                        Aspiramos a ser reconocidos como un proyecto estudiantil innovador que marca la diferencia
+                        en la educación inclusiva. Queremos que BrailleLearning sea la herramienta preferida para
+                        aprender Braille, demostrando que los jóvenes pueden crear soluciones tecnológicas que
+                        impacten positivamente en la comunidad y fomenten la inclusión.
                     </p>
                 </div>
 
                 <div class="card">
-                    <div class="card-icon">❤️</div>
+                    <i class="fas fa-heart card-icon"></i>
                     <h3>Nuestros Valores</h3>
                     <p>
-                        Inclusión, innovación, accesibilidad y compromiso con la excelencia
-                        educativa para todos los usuarios sin excepción.
+                        Como equipo estudiantil, nos guiamos por valores fundamentales: inclusión sin límites,
+                        innovación constante, compromiso con la accesibilidad, trabajo colaborativo y pasión por
+                        el aprendizaje. Creemos firmemente que la tecnología debe estar al servicio de todos,
+                        sin excepción, y que los jóvenes tenemos el poder de generar cambios significativos.
                     </p>
                 </div>
             </div>
@@ -564,73 +678,141 @@
         <section id="objetivos">
             <h2 class="section-title">Nuestros Objetivos</h2>
             <p class="section-subtitle">
-                Transformando la educación Braille con tecnología de vanguardia
+                Transformando la educación Braille con tecnología desarrollada por estudiantes
             </p>
 
             <div class="features">
                 <div class="feature-item">
-                    <div class="feature-icon">📚</div>
+                    <div class="feature-icon">
+                        <i class="fas fa-universal-access"></i>
+                    </div>
                     <div class="feature-content">
                         <h4>Educación Accesible</h4>
                         <p>
                             Proporcionar una plataforma completamente accesible con soporte para
                             TalkBack, navegación por voz y diseño inclusivo para todos los niveles
-                            de discapacidad visual.
+                            de discapacidad visual, garantizando que nadie quede excluido del aprendizaje.
                         </p>
                     </div>
                 </div>
 
                 <div class="feature-item">
-                    <div class="feature-icon">🎓</div>
+                    <div class="feature-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
                     <div class="feature-content">
                         <h4>Aprendizaje Progresivo</h4>
                         <p>
                             Sistema de lecciones estructurado que va desde lo básico hasta lo avanzado,
-                            con práctica interactiva y retroalimentación inmediata para un aprendizaje efectivo.
+                            con práctica interactiva y retroalimentación inmediata para un aprendizaje efectivo
+                            y adaptado al ritmo de cada usuario.
                         </p>
                     </div>
                 </div>
 
                 <div class="feature-item">
-                    <div class="feature-icon">🔄</div>
+                    <div class="feature-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
                     <div class="feature-content">
                         <h4>Traductor Bidireccional</h4>
                         <p>
                             Herramienta de traducción instantánea entre texto y Braille, con soporte
-                            para voz, cámara OCR y entrada manual para máxima flexibilidad.
+                            para voz, cámara OCR y entrada manual para máxima flexibilidad y facilidad de uso.
                         </p>
                     </div>
                 </div>
 
                 <div class="feature-item">
-                    <div class="feature-icon">🏆</div>
+                    <div class="feature-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
                     <div class="feature-content">
                         <h4>Gamificación Motivadora</h4>
                         <p>
                             Sistema de logros, seguimiento de progreso y desafíos que mantienen
-                            la motivación alta y hacen del aprendizaje una experiencia gratificante.
+                            la motivación alta y hacen del aprendizaje una experiencia gratificante y divertida.
                         </p>
                     </div>
                 </div>
 
                 <div class="feature-item">
-                    <div class="feature-icon">🌍</div>
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
                     <div class="feature-content">
                         <h4>Impacto Social</h4>
                         <p>
                             Contribuir a la inclusión social y laboral de personas con discapacidad
-                            visual mediante el dominio del Braille como herramienta de comunicación.
+                            visual mediante el dominio del Braille como herramienta de comunicación y autonomía.
                         </p>
                     </div>
                 </div>
 
                 <div class="feature-item">
-                    <div class="feature-icon">🚀</div>
+                    <div class="feature-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
                     <div class="feature-content">
                         <h4>Innovación Continua</h4>
                         <p>
                             Mejora constante basada en retroalimentación de usuarios, investigación
-                            en accesibilidad y las últimas tecnologías educativas.
+                            en accesibilidad y las últimas tecnologías educativas disponibles.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="instalacion">
+            <h2 class="section-title">Cómo Instalar</h2>
+            <p class="section-subtitle">
+                Sigue estos sencillos pasos para instalar BrailleLearning en tu dispositivo Android
+            </p>
+
+            <div class="installation-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>Descarga el APK</h4>
+                        <p>
+                            Haz clic en el botón "Descargar APK" en la sección de descarga.
+                            El archivo se guardará en la carpeta de descargas de tu dispositivo.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>Habilita Fuentes Desconocidas</h4>
+                        <p>
+                            Ve a Configuración → Seguridad → Instalar aplicaciones desconocidas.
+                            Permite la instalación desde tu navegador o administrador de archivos.
+                            (Este paso solo es necesario la primera vez)
+                        </p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>Abre el Archivo APK</h4>
+                        <p>
+                            Abre tu aplicación de archivos o descargas, busca el archivo
+                            "braillearning-demo-v1.0.apk" y toca sobre él para iniciar la instalación.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h4>Instala y Disfruta</h4>
+                        <p>
+                            Sigue las instrucciones en pantalla para completar la instalación.
+                            Una vez instalada, abre BrailleLearning y comienza tu viaje de aprendizaje.
+                            ¡Requisitos: Android 7.0 o superior!
                         </p>
                     </div>
                 </div>
@@ -645,62 +827,48 @@
                 </p>
                 <a href="https://github.com/braillearning/Braillearning-Web/releases/download/v1.0-demo/braillearning-demo-v1.0.apk"
                     class="download-button" download>
-                    <span class="download-icon">📱</span>
+                    <i class="fas fa-mobile-alt download-icon"></i>
                     Descargar APK (Demo)
                 </a>
                 <p style="margin-top: 2rem; font-size: 0.9rem; opacity: 0.8;">
                     Versión Demo • Android 7.0+ • Tamaño: ~50MB
                 </p>
             </div>
-
-            <div class="cards-grid" style="margin-top: 4rem;">
-                <div class="card">
-                    <div class="card-icon">✨</div>
-                    <h3>Características Premium</h3>
-                    <p>
-                        Acceso a lecciones básicas, traductor completo, práctica interactiva
-                        y sistema de logros en la versión demo.
-                    </p>
-                </div>
-
-                <div class="card">
-                    <div class="card-icon">🔒</div>
-                    <h3>Privacidad Garantizada</h3>
-                    <p>
-                        Tus datos están seguros. No recopilamos información personal
-                        innecesaria y respetamos tu privacidad.
-                    </p>
-                </div>
-
-                <div class="card">
-                    <div class="card-icon">💬</div>
-                    <h3>Soporte Dedicado</h3>
-                    <p>
-                        ¿Necesitas ayuda? Nuestro equipo está disponible para resolver
-                        tus dudas y mejorar tu experiencia.
-                    </p>
-                </div>
-            </div>
         </section>
     </main>
 
     <footer>
         <p>&copy; 2026 BrailleLearning. Todos los derechos reservados.</p>
-        <p>Hecho con ❤️ para hacer el mundo más accesible</p>
         <div class="social-links">
-            <a href="#" aria-label="GitHub">
-                <span aria-hidden="true">🔗</span>
+            <a href="https://wa.me/5216181635709" target="_blank" aria-label="WhatsApp"
+                title="Contáctanos por WhatsApp">
+                <i class="fab fa-whatsapp"></i>
             </a>
-            <a href="#" aria-label="Twitter">
-                <span aria-hidden="true">🐦</span>
-            </a>
-            <a href="#" aria-label="Email">
-                <span aria-hidden="true">✉️</span>
+            <a href="mailto:braillearning.soporte@gmail.com" aria-label="Gmail" title="Envíanos un correo">
+                <i class="fas fa-envelope"></i>
             </a>
         </div>
     </footer>
 
     <script>
+        // Create Braille dots animation
+        function createBrailleDots() {
+            const container = document.getElementById('brailleContainer');
+            const dotCount = 30;
+
+            for (let i = 0; i < dotCount; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'braille-dot';
+                dot.style.left = Math.random() * 100 + '%';
+                dot.style.animationDuration = (Math.random() * 10 + 15) + 's';
+                dot.style.animationDelay = Math.random() * 5 + 's';
+                container.appendChild(dot);
+            }
+        }
+
+        // Initialize Braille dots on page load
+        createBrailleDots();
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -714,8 +882,6 @@
                 }
             });
         });
-
-        // Download button now has the actual GitHub link - no alert needed
 
         // Header scroll effect
         let lastScroll = 0;
@@ -748,8 +914,8 @@
             });
         }, observerOptions);
 
-        // Observe cards and features
-        document.querySelectorAll('.card, .feature-item').forEach(el => {
+        // Observe cards, features, and steps
+        document.querySelectorAll('.card, .feature-item, .step').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(30px)';
             el.style.transition = 'all 0.6s ease';
