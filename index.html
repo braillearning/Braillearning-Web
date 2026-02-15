@@ -1038,6 +1038,69 @@
             white-space: nowrap;
             border-width: 0;
         }
+
+        /* New Team Card Design */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .team-card-new {
+            background: white;
+            border-radius: 20px;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .team-card-new:hover {
+            transform: translateY(-5px);
+        }
+
+        .team-icon-container {
+            width: 60px;
+            height: 60px;
+            background-color: #e0faff;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .team-icon-container i {
+            font-size: 1.5rem;
+            color: #00a8e8;
+        }
+
+        .team-info {
+            text-align: left;
+        }
+
+        .team-info h3 {
+            color: #1f2937;
+            font-size: 1.1rem;
+            margin-bottom: 0.2rem;
+            font-weight: 700;
+        }
+
+        .team-role {
+            color: #00a8e8;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-desc {
+            color: #6b7280;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
     </style>
     <!-- Google Analytics (Placeholder) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-HSWVZMVH6R"></script>
@@ -1069,7 +1132,7 @@
                 <li><a href="#nosotros">Nosotros</a></li>
                 <li><a href="#objetivos">Objetivos</a></li>
                 <li><a href="#capturas">Galería</a></li>
-                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#faq">Preguntas</a></li>
                 <li><a href="#instalacion">Instalación</a></li>
             </ul>
         </nav>
@@ -1276,7 +1339,7 @@
                     <img src="Logros.jpeg" alt="Sistema de Logros" style="width: 100%; height: auto; display: block;">
                     <div class="screenshot-info">
                         <h4>Sigue Tu Progreso</h4>
-                        <p>Gana medallas y mantén tu racha</p>
+                        <p>Desbloquea logros y mantén la motivación</p>
                     </div>
                 </div>
             </div>
@@ -1341,26 +1404,35 @@
             <p class="section-subtitle">Estudiantes apasionados por la tecnología y la inclusión</p>
 
             <div class="team-grid">
-                <div class="team-card">
-                    <div class="team-avatar">
-                        GO
+                <div class="team-card-new">
+                    <div class="team-icon-container">
+                        <i class="fas fa-code"></i>
                     </div>
-                    <h3>Gael Dario Ortiz Salazar</h3>
-                    <p>Desarrollador Líder</p>
+                    <div class="team-info">
+                        <h3>Gael Ortiz</h3>
+                        <p class="team-role">Líder de Desarrollo</p>
+                        <p class="team-desc">Visión técnica y arquitectura del sistema.</p>
+                    </div>
                 </div>
-                <div class="team-card">
-                    <div class="team-avatar">
-                        SO
+                <div class="team-card-new">
+                    <div class="team-icon-container">
+                        <i class="fas fa-bug"></i>
                     </div>
-                    <h3>Santiago Olavarrieta Ogando</h3>
-                    <p>Diseñador UI/UX & Estrategia</p>
+                    <div class="team-info">
+                        <h3>Santiago Olavarrieta</h3>
+                        <p class="team-role">QA & Desarrollo</p>
+                        <p class="team-desc">Asegurando la calidad y experiencia de usuario.</p>
+                    </div>
                 </div>
-                <div class="team-card">
-                    <div class="team-avatar">
-                        CH
+                <div class="team-card-new">
+                    <div class="team-icon-container">
+                        <i class="fas fa-book-reader"></i>
                     </div>
-                    <h3>Carlos Alberto Herrera Muñoz</h3>
-                    <p>Especialista en Accesibilidad</p>
+                    <div class="team-info">
+                        <h3>Carlos Muñoz</h3>
+                        <p class="team-role">Soporte & Documentación</p>
+                        <p class="team-desc">Gestión de contenidos y atención al usuario.</p>
+                    </div>
                 </div>
             </div>
         </section>
