@@ -935,23 +935,28 @@
         let mouseX = 0;
         let mouseY = 0;
 
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-
+        // Wait for DOM to be fully loaded
+        window.addEventListener('load', () => {
             const orb1 = document.querySelector('.gradient-orb-1');
             const orb2 = document.querySelector('.gradient-orb-2');
             const orb3 = document.querySelector('.gradient-orb-3');
 
-            if (orb1) {
-                orb1.style.transform = `translate(${mouseX * 0.02}px, ${mouseY * 0.02}px)`;
-            }
-            if (orb2) {
-                orb2.style.transform = `translate(${-mouseX * 0.015}px, ${-mouseY * 0.015}px)`;
-            }
-            if (orb3) {
-                orb3.style.transform = `translate(${mouseX * 0.01}px, ${-mouseY * 0.01}px)`;
-            }
+            console.log('Gradient orbs loaded:', orb1, orb2, orb3); // Debug
+
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+
+                if (orb1) {
+                    orb1.style.transform = `translate(${mouseX * 0.02}px, ${mouseY * 0.02}px)`;
+                }
+                if (orb2) {
+                    orb2.style.transform = `translate(${-mouseX * 0.015}px, ${-mouseY * 0.015}px)`;
+                }
+                if (orb3) {
+                    orb3.style.transform = `translate(${mouseX * 0.01}px, ${-mouseY * 0.01}px)`;
+                }
+            });
         });
 
         // Initialize Braille letters on page load
