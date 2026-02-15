@@ -29,19 +29,39 @@
         }
 
         :root {
-            --primary-color: #6366f1;
-            --primary-dark: #4f46e5;
+            /* Light Educational Theme */
+            --primary-color: #4f46e5;
+            /* Indigo 600 - Trust & Professionalism */
+            --primary-dark: #4338ca;
+            /* Indigo 700 */
             --primary-light: #818cf8;
-            --secondary-color: #ec4899;
+            /* Indigo 400 */
+            --secondary-color: #0ea5e9;
+            /* Sky 500 - Clarity */
             --accent-color: #14b8a6;
-            --bg-dark: #0f172a;
-            --bg-darker: #020617;
-            --text-light: #f8fafc;
-            --text-gray: #cbd5e1;
-            --card-bg: rgba(30, 41, 59, 0.5);
-            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            /* Teal 500 - Growth */
+
+            --bg-dark: #f8fafc;
+            /* Slate 50 - Main Background */
+            --bg-darker: #ffffff;
+            /* White - Card/Section Background */
+
+            --text-light: #1e293b;
+            /* Slate 800 - Main Text (High Contrast) */
+            --text-gray: #64748b;
+            /* Slate 500 - Secondary Text */
+
+            --card-bg: #ffffff;
+            /* White Cards */
+            --card-border: #e2e8f0;
+            /* Slate 200 - Subtle Borders */
+
+            --gradient-1: linear-gradient(135deg, #4f46e5 0%, #0ea5e9 100%);
+            /* Indigo to Sky */
+            --gradient-2: linear-gradient(135deg, #0ea5e9 0%, #14b8a6 100%);
+            /* Sky to Teal */
+            --gradient-3: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
+            /* Indigo to Pink (Accent) */
         }
 
         body {
@@ -52,7 +72,7 @@
             overflow-x: hidden;
         }
 
-        /* Interactive Gradient Background */
+        /* Interactive Gradient Background (Subtle for Light Theme) */
         .bg-animation {
             position: fixed;
             top: 0;
@@ -60,7 +80,7 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            background: var(--bg-darker);
+            background: var(--bg-dark);
             overflow: hidden;
         }
 
@@ -69,28 +89,29 @@
             width: 800px;
             height: 800px;
             border-radius: 50%;
-            filter: blur(120px);
-            opacity: 0.6;
+            filter: blur(100px);
+            opacity: 0.15;
+            /* Reduced opacity for light theme */
             transition: all 0.3s ease;
             pointer-events: none;
         }
 
         .gradient-orb-1 {
-            background: radial-gradient(circle, rgba(99, 102, 241, 0.8) 0%, transparent 60%);
-            top: 10%;
-            left: 5%;
+            background: radial-gradient(circle, #4f46e5 0%, transparent 70%);
+            top: -10%;
+            left: -10%;
         }
 
         .gradient-orb-2 {
-            background: radial-gradient(circle, rgba(236, 72, 153, 0.8) 0%, transparent 60%);
-            top: 50%;
-            right: 5%;
+            background: radial-gradient(circle, #0ea5e9 0%, transparent 70%);
+            top: 40%;
+            right: -10%;
         }
 
         .gradient-orb-3 {
-            background: radial-gradient(circle, rgba(20, 184, 166, 0.6) 0%, transparent 60%);
-            bottom: 5%;
-            left: 45%;
+            background: radial-gradient(circle, #14b8a6 0%, transparent 70%);
+            bottom: -10%;
+            left: 30%;
         }
 
         /* Braille Letter Animation */
@@ -143,8 +164,8 @@
             position: sticky;
             top: 0;
             backdrop-filter: blur(20px);
-            background: rgba(15, 23, 42, 0.8);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.9);
+            border-bottom: 1px solid var(--card-border);
             z-index: 100;
         }
 
@@ -206,7 +227,8 @@
         .logo img {
             width: 45px;
             height: 45px;
-            filter: drop-shadow(0 0 10px rgba(99, 102, 241, 0.3));
+            filter: invert(1) drop-shadow(0 0 10px rgba(99, 102, 241, 0.3));
+            /* Invert white logo to black */
         }
 
         .nav-links {
@@ -356,7 +378,8 @@
             backdrop-filter: blur(10px);
             border-radius: 24px;
             padding: 2.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--card-border);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
@@ -410,10 +433,12 @@
 
         /* Features Section */
         .features {
-            background: rgba(30, 41, 59, 0.3);
+            background: #ffffff;
             border-radius: 40px;
             padding: 4rem;
             margin: 4rem 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--card-border);
         }
 
         .feature-item {
@@ -422,9 +447,11 @@
             gap: 1.5rem;
             margin-bottom: 2rem;
             padding: 1.5rem;
-            background: rgba(255, 255, 255, 0.03);
+            background: #f8fafc;
+            /* Slate 50 */
             border-radius: 16px;
             transition: all 0.3s ease;
+            border: 1px solid var(--card-border);
         }
 
         .feature-item:hover {
@@ -584,7 +611,7 @@
         footer {
             text-align: center;
             padding: 3rem 5%;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid var(--card-border);
             color: var(--text-gray);
         }
 
@@ -606,7 +633,7 @@
             width: 60px;
             height: 60px;
             background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--card-border);
             border-radius: 50%;
             color: var(--text-light);
             font-size: 1.8rem;
@@ -632,7 +659,8 @@
             background: var(--card-bg);
             border-radius: 20px;
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
         }
 
@@ -645,7 +673,7 @@
         .screenshot-placeholder {
             width: 100%;
             height: 450px;
-            background: linear-gradient(45deg, #1f2937, #111827);
+            background: linear-gradient(45deg, #f1f5f9, #e2e8f0);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -654,7 +682,7 @@
 
         .screenshot-placeholder i {
             font-size: 3rem;
-            color: rgba(255, 255, 255, 0.2);
+            color: #94a3b8;
         }
 
         .screenshot-info {
@@ -686,9 +714,10 @@
             background: var(--card-bg);
             border-radius: 12px;
             padding: 1.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
             cursor: pointer;
             transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         }
 
         .faq-item:hover {
@@ -711,7 +740,8 @@
             line-height: 1.6;
             display: none;
             padding-top: 1rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1rem;
+            border-top: 1px solid var(--card-border);
         }
 
         .faq-item.active .faq-answer {
@@ -736,9 +766,10 @@
             padding: 2rem;
             border-radius: 20px;
             text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
             transition: all 0.3s ease;
             text-decoration: none;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
 
         .contact-card:hover {
@@ -902,7 +933,8 @@
             overflow-x: auto;
             margin-top: 3rem;
             border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--card-border);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
 
         .comparison-table {
@@ -915,13 +947,15 @@
         .comparison-table td {
             padding: 1.5rem;
             text-align: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid var(--card-border);
         }
 
         .comparison-table th {
             background: rgba(99, 102, 241, 0.1);
-            color: var(--text-light);
             font-weight: 700;
+            color: var(--primary-dark);
+            background: rgba(79, 70, 229, 0.05);
+            /* Indigo tint */
         }
 
         .comparison-table td.feature-name {
