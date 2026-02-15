@@ -276,7 +276,7 @@
             font-weight: 900;
             line-height: 1.1;
             margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 100%);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -483,10 +483,12 @@
 
         /* Installation Steps */
         .installation-steps {
-            background: rgba(30, 41, 59, 0.3);
+            background: #ffffff;
             border-radius: 40px;
             padding: 4rem;
             margin: 4rem 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--card-border);
         }
 
         .step {
@@ -495,14 +497,16 @@
             gap: 2rem;
             margin-bottom: 2.5rem;
             padding: 2rem;
-            background: rgba(255, 255, 255, 0.03);
+            background: #f8fafc;
             border-radius: 20px;
             transition: all 0.3s ease;
+            border: 1px solid var(--card-border);
         }
 
         .step:hover {
-            background: rgba(255, 255, 255, 0.06);
+            background: rgba(79, 70, 229, 0.05);
             transform: translateX(10px);
+            border-color: var(--primary-light);
         }
 
         .step-number {
@@ -966,12 +970,14 @@
         }
 
         .comparison-table .fa-check-circle {
-            color: var(--accent-color);
+            color: #10b981;
+            /* Emerald 500 - Green */
             font-size: 1.2rem;
         }
 
         .comparison-table .fa-times-circle {
-            color: var(--secondary-color);
+            color: #ef4444;
+            /* Red 500 */
             font-size: 1.2rem;
             opacity: 0.5;
         }
@@ -1185,6 +1191,49 @@
         </section>
 
         <!-- Impact Statistics -->
+        <style>
+            /* Stats Section - Light Theme Override */
+            .stats-section {
+                padding: 4rem 5%;
+            }
+
+            .stats-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 2rem;
+            }
+
+            .stat-item {
+                text-align: center;
+                background: #ffffff;
+                padding: 2rem;
+                border-radius: 20px;
+                border: 1px solid var(--card-border);
+                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+                transition: all 0.3s ease;
+            }
+
+            .stat-item:hover {
+                transform: translateY(-5px);
+                border-color: var(--primary-light);
+            }
+
+            .stat-item h3 {
+                font-size: 3rem;
+                font-weight: 900;
+                margin-bottom: 0.5rem;
+                background: var(--gradient-1);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+
+            .stat-item p {
+                color: var(--text-gray);
+                font-size: 1.1rem;
+                font-weight: 600;
+            }
+        </style>
         <section class="stats-section">
             <div class="stats-grid">
                 <div class="stat-item">
@@ -1530,42 +1579,25 @@
             <h2 class="section-title">Contáctanos</h2>
             <p class="section-subtitle">¿Tienes dudas o sugerencias? ¡Escríbenos!</p>
 
-            <div class="contact-grid">
-                <!-- Using cards for contact info -->
+            <div class="contact-grid"
+                style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); max-width: 800px; margin: 0 auto;">
+                <!-- WhatsApp Card -->
                 <a href="https://wa.me/5216181635709" target="_blank" class="contact-card">
                     <div class="contact-icon">
                         <i class="fab fa-whatsapp"></i>
                     </div>
                     <h3>WhatsApp</h3>
-                    <p>+52 1 618 163 5709</p>
+                    <p>Envíanos un mensaje directo</p>
                 </a>
 
-                <a href="mailto:braillearning@gmail.com" class="contact-card">
+                <!-- Email Card -->
+                <a href="mailto:braillearning.soporte@gmail.com" class="contact-card">
                     <div class="contact-icon">
                         <i class="fas fa-envelope"></i>
                     </div>
-                    <h3>Email</h3>
-                    <p>braillearning@gmail.com</p>
+                    <h3>Correo Electrónico</h3>
+                    <p>braillearning.soporte@gmail.com</p>
                 </a>
-            </div>
-
-            <div class="contact-form-container" style="margin-top: 3rem;">
-                <form onsubmit="event.preventDefault(); alert('¡Gracias por tu mensaje! Te contactaremos pronto.');">
-                    <div class="form-group">
-                        <label for="name">Nombre</label>
-                        <input type="text" id="name" class="form-control" placeholder="Tu nombre" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Correo Electrónico</label>
-                        <input type="email" id="email" class="form-control" placeholder="tucorreo@ejemplo.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Mensaje</label>
-                        <textarea id="message" class="form-control" rows="5" placeholder="¿Cómo podemos ayudarte?"
-                            required></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn">Enviar Mensaje</button>
-                </form>
             </div>
         </section>
 
